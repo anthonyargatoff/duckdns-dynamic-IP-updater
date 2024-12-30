@@ -1,0 +1,10 @@
+services:
+  dynamicDnsUpdater:
+    image: anthonyargatoff/duckdns-updater
+    build:
+      context: .
+      target: final
+    volumes:
+      - type: bind
+        source: ./config.sh
+        target: /dynamicDnsUpdater/config.sh
