@@ -4,7 +4,7 @@ services:
     build:
       context: .
       target: final
-    image: anthonyargatoff/duckdns-updater
+    image: anthonyargatoff/duckdns-updater:arm64
     # environment:
     #   - API_KEY=value
     #   - DOMAINE_NAME=value
