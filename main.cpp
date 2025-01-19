@@ -40,7 +40,6 @@ std::string getRequest(std::string&& url)
   {
     std::cerr << "cURL error: " << curl_easy_strerror(res) << std::endl;
   }
-  std::cout << "Get request response: " << readBuffer << std::endl;
   return readBuffer;
 }
 
