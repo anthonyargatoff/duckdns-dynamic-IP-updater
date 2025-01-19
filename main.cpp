@@ -55,6 +55,7 @@ const std::string ipRequest()
 
 int main()
 {
+  std::cout << "Process started. Checking dynamic dns changes every 60 seconds" << std::endl;
   if (std::getenv("API_KEY") == nullptr || std::getenv("DOMAIN_NAME") == nullptr) {
     std::cerr << "Must include API_KEY and DOMAIN_NAME" << std::endl;
     return 1;
