@@ -1,11 +1,8 @@
 services:
-  dynamicDnsUpdater:
-    image: anthonyargatoff/duckdns-updater
+  app:
     build:
       context: .
       target: final
-    volumes:
-      - type: bind
-        source: ./config.sh
-        target: /dynamicDnsUpdater/config.sh
-    restart: always
+
+    env_file: 
+      - ./.env

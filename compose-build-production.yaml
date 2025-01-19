@@ -1,7 +1,0 @@
-services:
-  dynamicDnsUpdater:
-    build:
-      context: .
-      target: final
-    platform: linux/arm64
-    image: 'anthonyargatoff/duckdns-updater'

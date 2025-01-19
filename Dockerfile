@@ -3,13 +3,14 @@
 FROM alpine:latest AS base
 
 FROM base AS build
-WORKDIR /dynamicDnsUpdater
-COPY . .
+RUN apk add g++ curl-dev
+RUN mkdir dynamicDnsUpdater
+COPY ./main.cpp /dynamicDnsUpdater
+RUN g++ -o /dynamicDnsUpdater/dynamicDnsUpdater /dynamicDnsUpdater/main.cpp -lcurl
 
 FROM base AS final
-
-RUN apk --no-cache add curl
 ARG UID=10001
+RUN apk add --no-cache libcurl libstdc++ libgcc
 RUN adduser \
     --disabled-password \
     --gecos "" \
@@ -18,9 +19,7 @@ RUN adduser \
     --no-create-home \
     --uid "${UID}" \
     appuser
-WORKDIR /dynamicDnsUpdater
-COPY --from=build /dynamicDnsUpdater/ .
-RUN chown -R appuser:appuser /dynamicDnsUpdater
-RUN chmod +x /dynamicDnsUpdater/main.sh
 USER appuser
-ENTRYPOINT [ "/dynamicDnsUpdater/main.sh" ]
+COPY --from=build /dynamicDnsUpdater/dynamicDnsUpdater /bin/
+RUN env
+ENTRYPOINT ["/bin/dynamicDnsUpdater" ]
