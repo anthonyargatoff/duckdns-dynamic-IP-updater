@@ -44,13 +44,11 @@ std::string getRequest(std::string&& url)
   return readBuffer;
 }
 
-// TODO: Get env var
 const std::string duckDNSRequest(const DuckDNSParams& params, std::string& newIp)
 {
   return getRequest("https://www.duckdns.org/update?domains=" + params.domainName + "&token=" + params.APIToken + "&ip=" + newIp);
 }
 
-// TODO: Get env var
 const std::string ipRequest()
 {
   return getRequest("https://api.ipify.org/");
