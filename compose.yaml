@@ -3,6 +3,6 @@ services:
     build:
       context: .
       target: final
-
+    image: anthonyargatoff/duckdns-updater
     env_file: 
       - ./.env
