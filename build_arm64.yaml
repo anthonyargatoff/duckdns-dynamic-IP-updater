@@ -1,0 +1,12 @@
+services:
+  app:
+    platform: linux/arm64/v8
+    build:
+      context: .
+      target: final
+    image: anthonyargatoff/duckdns-updater
+    # environment:
+    #   - API_KEY=value
+    #   - DOMAINE_NAME=value
+    env_file: 
+      - ./.env
