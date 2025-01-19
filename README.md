@@ -1,12 +1,16 @@
 # Dynamic IP updater
 A simple bash script to automatically update a dynamic ip address using [Duckdns](https://www.duckdns.org/). Uses http requests to [api.ipify](https://api.ipify.org/) to determine the current ip.
 
-## Steps
-
-1. Create a local copy of `config.sh` where you will put in your duckdns api token and domain.
-2. Run the script with `bash main.sh`
-
 ## Docker
-1. Copy the image from https://hub.docker.com/repository/docker/anthonyargatoff/duckdns-updater
-1. Create a _config.sh_ file.
-1. Start the docker container with `source config.sh && DOMAIN=$DOMAIN API_TOKEN=$API_TOKEN sudo docker compose up` to load variables.
+
+
+
+### Pull Docker Image
+1. Use `docker run -d -e DOMAIN_NAME=sample_domain_name -e API_KEY=sample_api_key anthonyargatoff/duckdns-updater:latest` to pull and run the docker image.
+2. Or, use the `compose.yaml` file, and add the env variables.
+
+## Local Development
+
+1. Create a local `.env` file, where you will put in your duckdns api key and domain name.
+2. Compile the script with `gcc main.cpp -lcurl`, then run with `./main`.
+
