@@ -10,7 +10,7 @@ RUN g++ -o /dynamicDnsUpdater/dynamicDnsUpdater /dynamicDnsUpdater/main.cpp -lcu
 
 FROM base AS final
 ARG UID=10001
-RUN apk add --no-cache libcurl libstdc++ libgcc
+RUN apk add libcurl libstdc++ libgcc
 RUN adduser \
     --disabled-password \
     --gecos "" \
