@@ -1,5 +1,5 @@
 # Dynamic IP updater
-A simple bash script to automatically update a dynamic ip address using [Duckdns](https://www.duckdns.org/). Uses http requests to [api.ipify](https://api.ipify.org/) to determine the current ip.
+C++ script to automatically update a dynamic ip address using [Duckdns](https://www.duckdns.org/).
 
 ## Docker
 
