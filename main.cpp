@@ -4,6 +4,7 @@
 #include <string.h>
 #include <chrono>
 #include <thread>
+#include <ctime>
 
 struct DuckDNSParams
 {
@@ -75,10 +76,19 @@ int main()
   while (1)
   {
     std::string newResult = ipRequest();
+    time_t timestamp;
+    time(&timestamp);
+    std::string timeStr = ctime(&timestamp);
+    timeStr.pop_back();
+
     if (newResult.compare(oldResult)) // IP has changed. Make duckdns request
     {
       duckDNSRequest(getParams, newResult);
+      std::cout << timeStr << " ip address changed from: " << oldResult << " to: " << newResult << std::endl;
       oldResult = newResult;
+
+    } else {
+      std::cout << timeStr << " ip address unchanged" << std::endl;
     }
     std::this_thread::sleep_for(std::chrono::seconds(60)); // Sleep for 60 seconds
   }
